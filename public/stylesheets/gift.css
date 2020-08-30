@@ -1,0 +1,55 @@
+@font-face {
+  font-family: Roboto Slab; /* Имя шрифта */
+  src: url(../stylesheets/gift-font.ttf); /* Путь к файлу со шрифтом */
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: #113861;
+  color: #fff;
+  background-image: url('/images/backgroundcity.png');
+  background-position: bottom;
+  background-repeat: repeat-x;
+  font-family: Roboto Slab;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-attachment: fixed;
+}
+
+h3 {
+  font-size: 50px;
+}
+
+.back-trans {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.greetings {
+  font-weight: bold;
+  font-size: 60px;
+  text-align: center;
+}
+
+.greetings p {
+  margin-top: 30px;
+}
+
+.main-block {
+  text-align: center;
+  width: 1000px;
+  margin-top: 50px;
+  padding: 10px 20px;
+}
+
+.footer {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #BFBFBF;
+}

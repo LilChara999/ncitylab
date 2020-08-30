@@ -1,0 +1,33 @@
+script(type="text/x-template" id="app")
+  section(class="countdown")
+
+    div("v-show"="!expired" class="timer")
+      div(class="box")
+        div(class="spacer")
+          p(class="value") #{days}
+          p(class="label") Дни
+
+    div(class="box")
+      div(class="spacer")
+        p(class="value") #{hours}
+        p(class="label") Часы
+
+    div(class="box")
+      div(class="spacer")
+      p(class="value") #{minutes}
+      p(class="label") Минуты
+
+    div(class="box")
+      div(class="spacer")
+        p(class="value") #{seconds}
+        p(class="label") Секунды
+
+    p(class="text") Будем рады вас видеть
+
+    div("v-show"="expired" class="expired-timer timer")
+      div(class="box")
+        div(class="spacer")
+        p(class="value") It's the great day
+        p(class="label") I'll have you in my arms
+
+p(id="app")
