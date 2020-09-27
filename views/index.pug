@@ -7,25 +7,6 @@ html(lang="ru")
     title= "..."
 
   body
-
-    script(type="text/x-template" id="countdown-template")
-      section.flex
-        div("v-if"="!expired" class="box")
-          h1 До вручения подарка:
-          p {{theTime.days}}
-          p :
-          p {{theTime.hours}}
-          p :
-          p {{theTime.minutes}}
-          p :
-          p {{theTime.seconds}}
-
-        div("v-if"="expired")
-          p #[a(href="/gift") Открыть подарок]
-
-
-    div(id="app")
-      countdown/
-
-
-    script(src='/javascripts/timer.js')
+    div
+      h3 #[a(href="http://ncitylab.com/gift") FAQ]
+      h3 Анонсы
