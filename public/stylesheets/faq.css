@@ -57,3 +57,7 @@ h3 {
   text-align: center;
   color: #BFBFBF;
 }
+
+.line-through {
+  text-decoration: line-through;
+}
