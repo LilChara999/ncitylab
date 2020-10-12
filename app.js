@@ -9,9 +9,9 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var faqRouter = require('./routes/faq');
 
-var mongoDB = 'mongodb://127.0.0.1/my_database';
-mongoose.connect(mongoDB);
-mongoose.Promise = global.Promise;
+var mongoDB = 'mongodb://localhost/tutorial';
+mongoose.connect("mongodb://localhost:27017/tutorial", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.Promise = require('bluebird');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
