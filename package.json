@@ -7,13 +7,18 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.7.2",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "^4.16.4",
+    "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
     "mongoose": "^5.10.8",
     "morgan": "~1.9.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11",
     "vue": "^2.6.12"
   },
