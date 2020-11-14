@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 var faqRouter = require('./routes/faq');
 
 var mongoDB = 'mongodb://localhost:27017/userssessions';
-mongoose.connect(dbConfig.url), { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(dbConfig.url);
 mongoose.Promise = require('bluebird');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
