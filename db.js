@@ -1,3 +1,3 @@
 module.exports = {
-	'url' : 'mongodb://localhost/ncitylab'
+	'url' : 'mongodb://localhost/userssessions'
 }
