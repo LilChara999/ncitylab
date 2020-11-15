@@ -1,6 +1,6 @@
 var express = require('express');
 var passport = require('passport');
-var router = express.Router(passport);
+var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
 	// if user is authenticated in the session, call the next() to call the next request handler
