@@ -7,7 +7,7 @@ var dbConfig = require('./db.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
-var routes = require('./routes/index')(passport);
+var routes = require('./routes/index.js')(passport);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
