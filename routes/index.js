@@ -1,4 +1,5 @@
 var express = require('express');
+var passport = require('passport');
 var router = express.Router(passport);
 
 var isAuthenticated = function (req, res, next) {
