@@ -17,7 +17,7 @@ module.exports = function(passport){
 	}),
 
 	/* Handle Login POST */
-	/*router.post('/login', passport.authenticate('login', {
+	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
 		failureRedirect: '/',
 		failureFlash : true
@@ -29,7 +29,7 @@ module.exports = function(passport){
 	}),
 
 	/* Handle Registration POST */
-	/*router.post('/signup', passport.authenticate('signup', {
+	router.post('/signup', passport.authenticate('signup', {
 		successRedirect: '/home',
 		failureRedirect: '/signup',
 		failureFlash : true
