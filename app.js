@@ -7,8 +7,6 @@ var dbConfig = require('./db.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
-app.use(passport.initialize());
-app.use(passport.session());
 var initPassport = require('./passport/init');
 initPassport(passport);
 var routes = require('./routes/index.js')(passport);
@@ -25,6 +23,8 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var app = express();
 app.use(session({secret: 'mySecretKey'}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
