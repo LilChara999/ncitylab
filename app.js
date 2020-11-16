@@ -10,6 +10,7 @@ var session = require('express-session');
 var initPassport = require('./passport/init');
 initPassport(passport);
 var routes = require('./routes/index.js')(passport);
+app.use('/', routes);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
