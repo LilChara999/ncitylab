@@ -25,7 +25,7 @@ module.exports = function(passport){
 		successRedirect: '/home';
 		failureRedirect: '/';
 		failureFlash : true
-	})),
+	}),
 
 	/* GET Registration Page */
 	router.get('/signup', function(req, res){
@@ -37,7 +37,7 @@ module.exports = function(passport){
 		successRedirect: '/home';
 		failureRedirect: '/signup';
 		failureFlash : true
-	})),
+	}),
 
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
