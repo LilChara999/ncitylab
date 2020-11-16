@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var initPassport = require('./passport/init');
+initPassport(passport);
 var routes = require('./routes/index.js')(passport);
 
 var indexRouter = require('./routes/index');
