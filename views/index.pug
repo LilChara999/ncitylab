@@ -13,8 +13,8 @@ html(lang="ru")
       p.line-through 1. Доработка FAQ :)
       p 2. Создание базы данных жителей города
       p 3. Создание учётных записей для работников лаборатории с базовым функционалом
-      #[a(href=0) Войти]
-      #[a(href=#0) Зарегистрироваться]
+      a(href=0) Войти
+      a(href=0) Зарегистрироваться
 
       form( action='/login', method='POST')
         input(type='text', name='username', placeholder='Email', required, autofocus)
