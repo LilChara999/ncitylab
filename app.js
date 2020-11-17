@@ -8,10 +8,11 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
 var initPassport = require('./passport/init');
+var flash = require('connect-flash');
 initPassport(passport);
-var routes = require('./routes/index.js')(passport);
+//var routes = require('./routes/index.js')(passport);
 
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index')(passport);
 var usersRouter = require('./routes/users');
 var faqRouter = require('./routes/faq');
 
@@ -31,6 +32,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
+app.use(flash())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
