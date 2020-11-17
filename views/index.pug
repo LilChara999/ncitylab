@@ -16,6 +16,9 @@ html(lang="ru")
       a(href=0) Войти
       a(href=0) Зарегистрироваться
 
+    div.user-modal
+      div.user-modal-container
+
       form( action='/login', method='POST')
         input(type='text', name='username', placeholder='Email', required, autofocus)
         input(type='password', name='password', placeholder='Password', required)
