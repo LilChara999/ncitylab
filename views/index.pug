@@ -15,11 +15,12 @@ html(lang="ru")
       p 3. Создание учётных записей для работников лаборатории с базовым функционалом
 
       form( action='/login', method='POST')
-							input(type='text', name='username', placeholder='Email', required, autofocus)
-							input(type='password', name='password', placeholder='Password', required)
-							button(type='submit') Sign in
-							span.clearfix
-					a(href='/signup') Create an account
-					#message
-					if message
-						h1 #{message}
+			   input(type='text', name='username', placeholder='Email', required, autofocus)
+			   input(type='password', name='password', placeholder='Password', required)
+				 button(type='submit') Sign in
+				 span.clearfix
+				 a(href='/signup') Create an account
+
+    #message
+		  if message
+			   h1 #{message}
