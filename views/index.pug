@@ -36,8 +36,8 @@ html(lang="ru")
         if message
           h1 #{message}
 
-      a.js-open-modal(href=0) Войти
-      a.js-open-modal(href=0) Зарегистрироваться
+      a.js-open-modal(href=0, data-modal="1") Войти
+      a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
 
       div.modal(data-modal="1")
         p.modal_title Войти
