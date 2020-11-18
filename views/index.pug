@@ -18,14 +18,38 @@ html(lang="ru")
 
     div.user-modal
       div.user-modal-container
+        div.switcher
+        a(href=0) Войти
+        a(href=0) Зарегистрироваться
 
-      form( action='/login', method='POST')
-        input(type='text', name='username', placeholder='Email', required, autofocus)
-        input(type='password', name='password', placeholder='Password', required)
-        button(type='submit') Sign in
-        span.clearfix
-        a(href='/signup') Create an account
+        div.login
+          form( action='/login', method='POST')
+            input(type='text', name='username', placeholder='Email', required, autofocus)
+            input(type='password', name='password', placeholder='Password', required)
+            button(type='submit') Sign in
+            span.clearfix
+            a(href='/signup') Create an account
+        #message
+          if message
+            h1 #{message}
 
-      #message
-        if message
-          h1 #{message}
+        div.signup
+          form(class='form-signin', action='/signup', method='POST')
+            input(type='text', name='username', placeholder='Username', required, autofocus)
+            input(type='password', name='password', placeholder='Password', required)
+            input(type='email', name='email', placeholder='Email',required)
+            button(class='btn btn-lg btn-primary btn-block', type='submit') Register
+            span.clearfix
+        #message
+          if message
+            h1 #{message}
+      a(href=0) Закрыть
+
+  = $('.hide-password').on('click', function(){
+    var $this= $(this),
+      $password_field = $this.prev('input');
+
+      ( 'password' == $password_field.attr('type') ) ? $password_field.attr('type', 'text') : $password_field.attr('type', 'password');
+      ( 'Hide' == $this.text() ) ? $this.text('Show') : $this.text('Hide');
+      $password_field.putCursorAtEnd();
+    });

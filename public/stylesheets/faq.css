@@ -61,3 +61,14 @@ h3 {
 .line-through {
   text-decoration: line-through;
 }
+
+.user-modal {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.user-modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
