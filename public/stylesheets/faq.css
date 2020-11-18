@@ -111,11 +111,9 @@ h3 {
 }
 
 .modal__cross {
-   width: 15px;
-   height: 15px;
    position: absolute;
    top: 20px;
    right: 20px;
-   fill: #fff;
+   color: #fff;
    cursor: pointer;
 }
