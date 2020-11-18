@@ -54,6 +54,7 @@ html(lang="ru")
             h1 #{message}
 
       div.modal(data-modal="2")
+        p.modal__cross.js-modal-close Закрыть
         p.modal_title Зарегистрироваться
         div.signup
           form(class='form-signin', action='/signup', method='POST')
