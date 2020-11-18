@@ -97,3 +97,9 @@ h3 {
   color: #fff;
   border-radius: 3px;
 }
+
+.modal.active,
+.overlay.active{
+   opacity: 1;
+   visibility: visible;
+}
