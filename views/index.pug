@@ -41,9 +41,29 @@ html(lang="ru")
 
       div.modal(data-modal="1")
         p.modal_title Войти
+        div.login
+          form( action='/login', method='POST')
+            input(type='text', name='username', placeholder='Логин', required, autofocus)
+            input(type='password', name='password', placeholder='Пароль', required)
+            button(type='submit') Войти
+            span.clearfix
+            a(href='/signup') Зарегистрироваться
+        #message
+          if message
+            h1 #{message}
 
       div.modal(data-modal="2")
         p.modal_title Зарегистрироваться
+        div.signup
+          form(class='form-signin', action='/signup', method='POST')
+            input(type='text', name='username', placeholder='Логин', required, autofocus)
+            input(type='password', name='password', placeholder='Пароль', required)
+            input(type='email', name='email', placeholder='E-mail',required)
+            button(class='btn btn-lg btn-primary btn-block', type='submit') Зарегистрироваться
+            span.clearfix
+        #message
+          if message
+            h1 #{message}
 
       div.overlay.js-modal-overlay
 
