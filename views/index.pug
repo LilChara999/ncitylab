@@ -18,7 +18,7 @@ html(lang="ru")
         form( action='/login', method='POST')
           input(type='text', name='username', placeholder='Логин', required, autofocus)
           input(type='password', name='password', placeholder='Пароль', required)
-          button(type='submit') Sign in
+          button(type='submit') Войти
           span.clearfix
           a(href='/signup') Create an account
       #message
@@ -30,7 +30,7 @@ html(lang="ru")
           input(type='text', name='username', placeholder='Логин', required, autofocus)
           input(type='password', name='password', placeholder='Пароль', required)
           input(type='email', name='email', placeholder='E-mail',required)
-          button(class='btn btn-lg btn-primary btn-block', type='submit') Register
+          button(class='btn btn-lg btn-primary btn-block', type='submit') Зарегистрироваться
           span.clearfix
       #message
         if message
