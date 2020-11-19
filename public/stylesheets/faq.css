@@ -1,6 +1,11 @@
 @font-face {
-  font-family: Roboto Slab; /* Имя шрифта */
+  font-family: CynthoNextSlab-Light; /* Имя шрифта */
   src: url(../stylesheets/faq-font.ttf); /* Путь к файлу со шрифтом */
+}
+
+@font-face {
+  font-family: DigitallCG; /* Имя шрифта */
+  src: url(../stylesheets/timer-font.ttf); /* Путь к файлу со шрифтом */
 }
 
 html {
@@ -8,46 +13,35 @@ html {
 }
 
 body {
-  background-color: #113861;
-  color: #fff;
-  background-image: url('/images/backgroundcity.png');
-  background-position: bottom;
-  background-repeat: repeat-x;
-  font-family: Roboto Slab;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #000;
+  color: #fff;
+  background-image: url('/images/backgroundblacksun.jpg');
+  background-position: center;
+  background-size: 1500px auto;
   background-attachment: fixed;
+  font-family: CynthoNextSlab-Light;
 }
 
 h3 {
   font-size: 50px;
 }
 
-.back-trans {
-  background-color: rgba(255, 255, 255, 0.3);
-}
-
-.greetings {
-  font-weight: bold;
-  font-size: 60px;
-  text-align: center;
-}
-
-.greetings p {
-  margin: 0;
-}
-
-.greetings img {
-  margin-top: 30px;
+input {
+  margin: 5px;
 }
 
 .main-block {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  width: 1000px;
-  margin-top: 50px;
-  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
 
 .footer {
@@ -55,11 +49,41 @@ h3 {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #BFBFBF;
+  color: #fff;
 }
 
-.line-through {
-  text-decoration: line-through;
+.index {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 30px;
+}
+
+button {
+  font-family: DigitallCG;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+.index:hover {
+  background-color: #660000;
+  color: #000;
+}
+
+.menu {
+  font-family: DigitallCG;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.faq {
+  width: 70%;
 }
 
 .overlay {
@@ -90,18 +114,9 @@ h3 {
   text-align: center;
   padding: 30px;
   border-radius: 3px;
-  background-color: #aaa;
+  background-color: #000;
   transition: 0.3s all;
-}
-
-.modal a {
-  padding: 20px;
-  display: inline-block;
-  text-decoration: none;
-  background-color: #414b52;
-  margin: 10px;
-  color: #fff;
-  border-radius: 3px;
+  font-family: DigitallCG;
 }
 
 .modal.active,
@@ -116,4 +131,31 @@ h3 {
    right: 20px;
    color: #fff;
    cursor: pointer;
+}
+
+.js-open-modal {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+button {
+  font-family: DigitallCG;
+  box-shadow: none;
+  outline: none;
+  border: none;
+}
+
+.js-open-modal:hover {
+  background-color: #660000;
+  color: #000;
+}
+
+.js-open-modal.form {
+  font-size: 20px;
 }
