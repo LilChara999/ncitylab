@@ -116,6 +116,11 @@ input {
   font-size: 50px;
 }
 
+.faq:hover {
+  background-color: #660000;
+  color: #000;
+}
+
 button {
   font-family: DigitallCG;
   box-shadow: none;
