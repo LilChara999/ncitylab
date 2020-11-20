@@ -7,6 +7,19 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
+router.get('/', function(req, res, next) {
+	if(req.session.user){
+		var data = {
+			user : req.session.user
+		}
+		res.render('index', data);
+	} else {
+		var data = {title: 'Express',
+	}
+	res.render('index', data);
+	}
+});
+
 module.exports = function(passport){
 
 	/* GET login page. */

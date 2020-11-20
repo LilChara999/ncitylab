@@ -7,6 +7,7 @@ var dbConfig = require('./db.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var initPassport = require('./passport/init');
 var flash = require('connect-flash');
 initPassport(passport);
@@ -23,7 +24,14 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var app = express();
-app.use(session({secret: 'mySecretKey'}));
+app.use(session({
+  secret: 'mySecretKey',
+  resave: false,
+  saveUninitialized: false,
+  store: new MongoStore({
+    url: 'mongodb://localhost:27017/savedsessions'
+  })
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 

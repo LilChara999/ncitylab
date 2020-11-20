@@ -1,7 +1,15 @@
 var mongoose = require('mongoose');
 
-module.exports = mongoose.model('User', {
-  username: String,
-  password: String,
-  email: String
-});
+var User = new mongoose.Schema({
+  username: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  }
+})
+
+module.exports = mongoose.model('User', User)
