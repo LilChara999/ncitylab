@@ -11,7 +11,7 @@ var MongoStore = require('connect-mongo')(session);
 var initPassport = require('./passport/init');
 var flash = require('connect-flash');
 initPassport(passport);
-//var routes = require('./routes/index.js')(passport);
+var routes = require('./routes/index.js')(passport);
 
 var indexRouter = require('./routes/index')(passport);
 var usersRouter = require('./routes/users');
