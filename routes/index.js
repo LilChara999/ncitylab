@@ -28,10 +28,14 @@ module.exports = function(passport){
 		res.render('index', { message: req.flash('message') });
 	});
 
+	router.get('/login', function(req, res){
+		res.render('login',{message: req.flash('message')});
+	});
+
 	/* Handle Login POST */
 	router.post('/login', passport.authenticate('login', {
 		successRedirect: '/home',
-		failureRedirect: '/',
+		failureRedirect: '/login',
 		failureFlash : true
 	}));
 

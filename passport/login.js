@@ -12,8 +12,10 @@ module.exports = function(passport){
             User.findOne({ 'username' :  username },
                 function(err, user) {
                     // In case of any error, return using the done method
-                    if (err)
+                    if (err) {
+												console.log('Error in Login: '+err);
                         return done(err);
+										}
                     // Username does not exist, log the error and redirect back
                     if (!user){
                         console.log('User Not Found with username '+username);
