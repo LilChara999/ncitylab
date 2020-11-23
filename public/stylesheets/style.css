@@ -121,11 +121,19 @@ input {
   color: #000;
 }
 
-button {
+.button {
   font-family: DigitallCG;
   box-shadow: none;
   outline: none;
   border: none;
+  font-size: 20px;
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
 }
 
 .js-open-modal:hover {
@@ -139,4 +147,20 @@ input[type="submit"] {
   box-shadow: none;
   outline: none;
   border: none;
+}
+
+.js-open-modal-button {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 50px;
+}
+
+.js-open-modal-button:hover {
+  background-color: #660000;
+  color: #000;
 }

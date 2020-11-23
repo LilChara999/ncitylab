@@ -19,9 +19,9 @@ html(lang="ru")
         form( action='/login', method='POST')
           input(type='text', name='username', placeholder='Логин', required, autofocus)
           input(type='password', name='password', placeholder='Пароль', required)
-          input(class ='js-open-modal', type='submit', value='Войти')
+          input(class ='js-open-modal-button', type='submit', value='Войти')
           span.clearfix
-          a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
+          a.js-open-modal.button(href=0, data-modal="2") Зарегистрироваться
       #message
         if message
           h1 #{message}
@@ -30,11 +30,11 @@ html(lang="ru")
       p.modal__cross.js-modal-close Закрыть
       p.modal_title Зарегистрироваться
       div.signup
-        form(class='form-signin', action='/signup', method='POST')
+        form(action='/passport/signup.js', method='POST')
           input(type='text', name='username', placeholder='Логин', required, autofocus)
           input(type='password', name='password', placeholder='Пароль', required)
           input(type='email', name='email', placeholder='E-mail',required)
-          input(class='js-open-modal', type='submit', value='Зарегистрироваться')
+          input(class='js-open-modal-button', type='submit', value='Зарегистрироваться')
           span.clearfix
       #message
         if message
