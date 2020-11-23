@@ -14,7 +14,6 @@ initPassport(passport);
 var routes = require('./routes/index.js')(passport);
 
 var indexRouter = require('./routes/index')(passport);
-var usersRouter = require('./routes/users');
 var faqRouter = require('./routes/faq');
 
 var mongoDB = 'mongodb://localhost:27017/userssessions';
