@@ -1,16 +1,21 @@
-extends layout
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		link(type="text/css" rel="stylesheet" href="/stylesheets/sign.css")
+		title= "Регистрация"
 
-block content
-	div
-		h1 Регистрация
-			div
-				form(class='form-signin', action='/signup', method='POST')
-					input(type='text', name='username', placeholder='Логин', required, autofocus)
-					input(type='password', name='password', placeholder='Пароль', required)
-					input(type='email', name='email', placeholder='E-mail',required)
-					button(class='btn btn-lg btn-primary btn-block', type='submit') Зарегистрироваться
-					span.clearfix
-				#message
-					if message
-						h1 #{message}
-			a.index(href="http://ncitylab.com") На главную
+	body
+		div.main-block
+			h1 Регистрация
+				div
+					form(class='form-signin', action='/signup', method='POST')
+						input(type='text', name='username', placeholder='Логин', required, autofocus)
+						input(type='password', name='password', placeholder='Пароль', required)
+						input(type='email', name='email', placeholder='E-mail', required)
+						button(class='btn btn-lg btn-primary btn-block', type='submit') Зарегистрироваться
+						span.clearfix
+					#message
+						if message
+							h1 #{message}
+				a.to-main(href="http://ncitylab.com") Вернуться на главную

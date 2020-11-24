@@ -1,14 +1,20 @@
-extends layout
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		link(type="text/css" rel="stylesheet" href="/stylesheets/sign.css")
+		title= "Войти"
 
-block content
-	div
-		h1 Войти
-			div
-				form( action='login', method='POST')
-					input(type='text', name='username', placeholder='Логин', required, autofocus)
-					input(type='password', name='password', placeholder='Пароль', required)
-					input(class ='js-open-modal-button', type='submit', value='Войти')
-					span.clearfix
-				#message
-					if message
-						h1 #{message}
+	body
+		div.main-block
+			h1 Вход на сайт
+				div
+					form( action='login', method='POST')
+						input(type='text', name='username', placeholder='Логин', required, autofocus)
+						input(type='password', name='password', placeholder='Пароль', required)
+						input(class ='js-open-modal-button', type='submit', value='Войти')
+						span.clearfix
+					#message
+						if message
+							h3 #{message}
+				a.to-main(href="http://ncitylab.com") Вернуться на главную
