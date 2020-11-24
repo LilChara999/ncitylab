@@ -19,7 +19,7 @@ module.exports = function(passport){
                     // Username does not exist, log the error and redirect back
                     if (!user){
                         console.log('Пользователь под ником '+username+' не найден');
-                        return done(null, false, req.flash('message', 'Пользователь не найден'));
+                        return done(null, false, req.flash('message', 'Пользователь '+username+' не найден'));
                     }
                     // User exists but wrong password, log the error
                     if (!isValidPassword(user, password)){
