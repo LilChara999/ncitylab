@@ -2,15 +2,13 @@ extends layout
 
 block content
 	div
-		div
+		h1 Войти
 			div
-				h1 Log in
-					div
-						form( action='login', method='POST')
-							input(type='text', name='username', placeholder='Логин', required, autofocus)
-							input(type='password', name='password', placeholder='Пароль', required)
-							input(class ='js-open-modal-button', type='submit', value='Войти')
-							span.clearfix
-						#message
-							if message
-								h1 #{message}
+				form( action='login', method='POST')
+					input(type='text', name='username', placeholder='Логин', required, autofocus)
+					input(type='password', name='password', placeholder='Пароль', required)
+					input(class ='js-open-modal-button', type='submit', value='Войти')
+					span.clearfix
+				#message
+					if message
+						h1 #{message}
