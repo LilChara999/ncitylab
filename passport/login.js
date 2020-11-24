@@ -24,7 +24,7 @@ module.exports = function(passport){
                     // User exists but wrong password, log the error
                     if (!isValidPassword(user, password)){
                         console.log('Invalid Password');
-                        return done(null, false, req.flash('message', 'Неверный пароль')); // redirect back to login page
+                        return done(null, false, req.flash('message', 'Неверный пароль, попробуйте ещё раз')); // redirect back to login page
                     }
                     // User and password both match, return user from done method
                     // which will be treated like success
