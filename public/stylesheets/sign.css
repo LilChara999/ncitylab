@@ -3,6 +3,11 @@
   src: url(../stylesheets/timer-font.ttf); /* Путь к файлу со шрифтом */
 }
 
+@font-face {
+  font-family: CynthoNextSlab-Light; /* Имя шрифта */
+  src: url(../stylesheets/faq-font.ttf); /* Путь к файлу со шрифтом */
+}
+
 html {
   height: 100%;
   display: flex;
@@ -52,4 +57,8 @@ input {
 .to-main:hover {
   background-color: #660000;
   color: #000;
+}
+
+.text {
+  font-family: CynthoNextSlab-Light;
 }
