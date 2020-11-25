@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 		var data = {
 			user : req.session.user
 		}
-		res.render('index', data);
+		res.render('test', data);
 	} else {
 		var data = {title: 'Express',
 	}
@@ -24,11 +24,14 @@ router.get('/', function(req, res, next) {
 
 module.exports = function(passport){
 
+	router.get('/', isAuthenticated, function(req, res){
+		res.render('test', { user: req.user });
+	});
+
 	/* GET login page. */
-	router.get('/', isAuthenticated, function(req, res) {
+	router.get('/', function(req, res) {
     	// Display the Login page with any flash message, if any
 		res.render('index', { message: req.flash('message') });
-		res.render('index', { user: req.user });
 	});
 
 	router.get('/login', function(req, res){

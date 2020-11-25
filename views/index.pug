@@ -8,6 +8,7 @@ html(lang="ru")
 
   body
     div.main-block
+      #username
       a.js-open-modal(href=0, data-modal="1") Войти
       a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
       a.faq(href="http://ncitylab.com/faq") FAQ
@@ -39,9 +40,6 @@ html(lang="ru")
         #message
           if message
             h1 #{message}
-      #user
-        if user
-          p #{user.email}
 
     div.overlay.js-overlay-modal
 
