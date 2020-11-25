@@ -2,36 +2,31 @@ var express = require('express');
 var router = express.Router();
 
 var isAuthenticated = function (req, res, next) {
-	if (req.isAuthenticated()) {
+	if (req.isAuthenticated())
 		return next();
-	} else {
 	res.redirect('/');
-	}
 }
 
-router.get('/', function(req, res, next) {
-	if(req.session.user){
-		var data = {
-			user : req.session.user
-		}
-		res.render('test', data);
-	} else {
-		var data = {title: 'Express',
-	}
-	res.render('index', data);
-	}
-});
+//router.get('/', function(req, res, next) {
+	//if(req.session.user){
+		//var data = {
+			//user : req.session.user
+		//}
+		//res.render('test', data);
+	//} else {
+		//var data = {title: 'Express',
+	//}
+	//res.render('index', data);
+	//}
+//});
 
 module.exports = function(passport){
 
-	router.get('/', isAuthenticated, function(req, res){
-		res.render('test', { user: req.user });
-	});
-
 	/* GET login page. */
-	router.get('/', function(req, res) {
+
+	router.get('/', isAuthenticated, function(req, res) {
     	// Display the Login page with any flash message, if any
-		res.render('index', { message: req.flash('message') });
+		res.render('index', { user: req.user });
 	});
 
 	router.get('/login', function(req, res){
