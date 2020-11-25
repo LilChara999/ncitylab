@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'mySecretKey',
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: new MongoStore({
     url: 'mongodb://localhost:27017/savedsessions'
   })

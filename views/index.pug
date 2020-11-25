@@ -7,42 +7,41 @@ html(lang="ru")
     title= "Лаборатория Н"
 
   body
-    #user
-      if user
-        h1 Здравствуй, #{user.username}!
-      if !user
-        div.main-block
-          a.js-open-modal(href=0, data-modal="1") Войти
-          a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
-          a.faq(href="http://ncitylab.com/faq") FAQ
+    div.main-block
+      a.js-open-modal(href=0, data-modal="1") Войти
+      a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
+      a.faq(href="http://ncitylab.com/faq") FAQ
 
-        div.modal(data-modal="1")
-          p.modal__cross.js-modal-close Закрыть
-          p.modal_title Войти?
-          div.login
-            form( action='login', method='POST')
-              input(type='text', name='username', placeholder='Логин', required, autofocus)
-              input(type='password', name='password', placeholder='Пароль', required)
-              input(class ='js-open-modal-button', type='submit', value='Войти')
-              span.clearfix
-              a.js-open-modal.button(href=0, data-modal="2") Зарегистрироваться
-            #message
-              if message
-                h1 #{message}
+    div.modal(data-modal="1")
+      p.modal__cross.js-modal-close Закрыть
+      p.modal_title Войти?
+      div.login
+        form( action='login', method='POST')
+          input(type='text', name='username', placeholder='Логин', required, autofocus)
+          input(type='password', name='password', placeholder='Пароль', required)
+          input(class ='js-open-modal-button', type='submit', value='Войти')
+          span.clearfix
+          a.js-open-modal.button(href=0, data-modal="2") Зарегистрироваться
+        #message
+          if message
+            h1 #{message}
 
-        div.modal(data-modal="2")
-          p.modal__cross.js-modal-close Закрыть
-          p.modal_title Зарегистрироваться
-          div.signup
-            form(action='signup', method='POST')
-              input(type='text', name='username', placeholder='Логин', required, autofocus)
-              input(type='password', name='password', placeholder='Пароль', required)
-              input(type='email', name='email', placeholder='E-mail',required)
-              input(class='js-open-modal-button', type='submit', value='Зарегистрироваться')
-              span.clearfix
-          #message
-            if message
-              h1 #{message}
+    div.modal(data-modal="2")
+      p.modal__cross.js-modal-close Закрыть
+      p.modal_title Зарегистрироваться
+      div.signup
+        form(action='signup', method='POST')
+          input(type='text', name='username', placeholder='Логин', required, autofocus)
+          input(type='password', name='password', placeholder='Пароль', required)
+          input(type='email', name='email', placeholder='E-mail',required)
+          input(class='js-open-modal-button', type='submit', value='Зарегистрироваться')
+          span.clearfix
+        #message
+          if message
+            h1 #{message}
+      #user
+        if user
+          p #{user.email}
 
     div.overlay.js-overlay-modal
 
