@@ -8,11 +8,19 @@ html(lang="ru")
 
   body
     div.main-block
+      div
+        #user
+          if user
+            div.menu
+              a.index(href="/") На главную
+              a.index(href="/signout") Выйти
+          else
+            div.menu
+              a.index(href="/") На главную
+              a.js-open-modal(href=0, data-modal="1") Войти
+              a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
 
-      div.menu
-        a.index(href="/") На главную
-        a.js-open-modal(href=0, data-modal="1") Войти
-        a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
+      include modals.pug
 
       div.faq
 
@@ -33,35 +41,5 @@ html(lang="ru")
         p Во-вторых, зайти в сообщество с нашей игрой #[a(href="http://ncity.beon.fun/") N-city] и подать анкету в личные сообщения #[a(href="http://lilchara.beon.fun/") мне].
         p В-третьих, немного подождать, а после пообщаться со мной :)
         p Вуаля, вы великолепны!
-
-      div.modal(data-modal="1")
-        p.modal__cross.js-modal-close Закрыть
-        p.modal_title Войти?
-        div.login
-          form( action='/login', method='POST')
-            input(type='text', name='username', placeholder='Логин', required, autofocus)
-            input(type='password', name='password', placeholder='Пароль', required)
-            button.js-open-modal.form(type='submit') Войти
-            span.clearfix
-            a.js-open-modal.form(href=0, data-modal="2") Зарегистрироваться
-        #message
-          if message
-            h1 #{message}
-
-      div.modal(data-modal="2")
-        p.modal__cross.js-modal-close Закрыть
-        p.modal_title Зарегистрироваться
-        div.signup
-          form(class='form-signin', action='/signup', method='POST')
-            input(type='text', name='username', placeholder='Логин', required, autofocus)
-            input(type='password', name='password', placeholder='Пароль', required)
-            input(type='email', name='email', placeholder='E-mail',required)
-            button(class='btn btn-lg btn-primary btn-block', type='submit') Зарегистрироваться
-            span.clearfix
-        #message
-          if message
-            h1 #{message}
-
-      div.overlay.js-overlay-modal
 
     script(src='/javascripts/modal.js')
