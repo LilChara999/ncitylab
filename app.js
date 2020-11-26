@@ -14,7 +14,6 @@ initPassport(passport);
 var routes = require('./routes/index.js')(passport);
 
 var indexRouter = require('./routes/index')(passport);
-var faqRouter = require('./routes/faq');
 
 var mongoDB = 'mongodb://localhost:27017/userssessions';
 mongoose.connect(dbConfig.url, {
@@ -48,7 +47,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/faq', faqRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
