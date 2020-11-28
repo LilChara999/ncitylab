@@ -10,8 +10,9 @@ html(lang="ru")
     #user
       if user
         div.center.background
-          a.general-button(href="/faq") FAQ
-          a.general-button(href="/home") Домой
+          div.menu
+            a.general-button(href="/faq") FAQ
+            a.general-button(href="/home") Домой
           h1 Добро пожаловать, #{user.username}!
           a.general-button(href="/signout") Выйти
       else
