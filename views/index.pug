@@ -7,18 +7,17 @@ html(lang="ru")
     title= "Лаборатория Н"
 
   body
-    div
-      #user
-        if user
-          div.main-block
-            p(style="font-size: 50px") Добро пожаловать, #{user.username}!
-            a.faq(href="/signout") Выйти
-        else
-          div.main-block
-            a.js-open-modal(href=0, data-modal="1") Войти
-            a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
-            a.faq(href="/faq") FAQ
-      include modals.pug
+    #user
+      if user
+        div.center.background
+          h1 Добро пожаловать, #{user.username}!
+          a.general-button(href="/signout") Выйти
+      else
+        div.center
+          a.js-open-modal(href=0, data-modal="1") Войти
+          a.js-open-modal(href=0, data-modal="2") Зарегистрироваться
+          a.faq-button(href="/faq") FAQ
+    include modals.pug
 
 
     script(src='/javascripts/modal.js')

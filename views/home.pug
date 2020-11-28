@@ -2,16 +2,17 @@ doctype html
 html(lang="ru")
 	head
 		meta(charset="UTF-8")
-		link(type="text/css" rel="stylesheet" href="/stylesheets/sign.css")
+		link(type="text/css" rel="stylesheet" href="/stylesheets/style.css")
 		title= "Домашняя страница"
 
 	body
-		div.main-block
-			h1.text Домашняя страница
-				div.text
-					#user
-					h3 Добро пожаловать, #{user.username}. Подробности аккаунта
-					p Логин #{user.username}
-					p E-mail #{user.email}
-			a.to-main(href="/") Вернуться на главную
-			a.to-main(href='/signout') Выйти
+		div.center.background
+			div.menu
+				a.general-button(href="/") На главную
+				a.general-button(href="/faq") FAQ
+				a.general-button(href='/signout') Выйти
+			div.home-text
+				#user
+				h1 Рад тебя видеть, #{user.username}.
+				p Здесь пока что ничего нет, но скоро будет :)
+				p Не скучай :)

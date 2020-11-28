@@ -1,11 +1,11 @@
 div.modal(data-modal="1")
-  p.modal__cross.js-modal-close Закрыть
-  p.modal_title Войти?
+  p.js-modal-close Закрыть
+  p.digital-text Войти?
   div.login
     form( action='login', method='POST')
       input(type='text', name='username', placeholder='Логин', required, autofocus)
       input(type='password', name='password', placeholder='Пароль', required)
-      input(class ='js-open-modal-button', type='submit', value='Войти')
+      input(class ='button', type='submit', value='Войти')
       span.clearfix
       a.js-open-modal.button(href=0, data-modal="2") Зарегистрироваться
     #message
@@ -13,14 +13,14 @@ div.modal(data-modal="1")
         h1 #{message}
 
 div.modal(data-modal="2")
-  p.modal__cross.js-modal-close Закрыть
-  p.modal_title Зарегистрироваться
+  p.js-modal-close Закрыть
+  p.digital-text Зарегистрироваться
   div.signup
     form(action='signup', method='POST')
       input(type='text', name='username', placeholder='Логин', required, autofocus)
       input(type='password', name='password', placeholder='Пароль', required)
       input(type='email', name='email', placeholder='E-mail',required)
-      input(class='js-open-modal-button', type='submit', value='Зарегистрироваться')
+      input(class='button', type='submit', value='Зарегистрироваться')
       span.clearfix
     #message
       if message

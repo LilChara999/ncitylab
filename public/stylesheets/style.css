@@ -1,18 +1,23 @@
-@font-face {
+@font-face { /*Терминальный шрифт*/
   font-family: DigitallCG; /* Имя шрифта */
   src: url(../stylesheets/timer-font.ttf); /* Путь к файлу со шрифтом */
 }
 
+@font-face { /*Шрифт для чтения*/
+  font-family: CynthoNextSlab-Light; /* Имя шрифта */
+  src: url(../stylesheets/faq-font.ttf); /* Путь к файлу со шрифтом */
+}
+
 html {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 body {
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
   align-items: center;
   background-color: #000;
@@ -21,18 +26,32 @@ body {
   background-position: center;
   background-size: 1500px auto;
   background-attachment: fixed;
-  font-family: DigitallCG;
+  font-family: CynthoNextSlab-Light;
 }
 
-h3 {
-  font-size: 50px;
-}
+/*НЕСКОЛЬКО ШАБЛОНОВ*/
 
+/*используется в файлах login, modals, register*/
+/*делает отступы между полями ввода*/
 input {
   margin: 5px;
 }
 
-.main-block {
+/*используется почти во всех файлах*/
+/*затемнение фона для текста*/
+.background {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/*используется почти во всех файлах*/
+/*Делает текст "терминальным"*/
+.digital-text {
+  font-family: DigitallCG;
+}
+
+/*Используется в файле index, home*/
+/*Выравнивает элеменеты по центру*/
+.center {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -40,14 +59,117 @@ input {
   align-items: center;
 }
 
-.footer {
-  font-size: 12px;
-  margin: 0;
-  padding: 0;
-  text-align: center;
+/*Используется почти во всех файлах*/
+/*Для работы со скриптом*/
+.js-open-modal {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
   color: #fff;
+  border-radius: 3px;
+  font-size: 50px;
+  font-family: DigitallCG;
 }
 
+/*Используется почти во всех файлах*/
+/*При наведении на элемент*/
+.js-open-modal:hover {
+  background-color: #660000;
+  color: #000;
+  font-family: DigitallCG;
+}
+
+/*используется почти во всех файлах*/
+/*Стиль для большинства кнопок*/
+.general-button {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 20px;
+  font-family: DigitallCG;
+}
+
+/*Используется в файлах login, register*/
+/*Увеличение стандартной кнопки*/
+.big-button {
+  font-size: 30px;
+}
+
+/*используется почти во всех файлах*/
+/*При наведении на элемент*/
+.general-button:hover {
+  background-color: #660000;
+  color: #000;
+}
+
+/*FAQ.PUG*/
+
+/*разделитель для абзацев, используется с тегом div*/
+.abzac {
+  margin-bottom: 70px;
+}
+
+/*Применяется к основному блоку*/
+.block-faq {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  width: 70%;
+}
+
+/*Для уменьшения размера кнопки*/
+.little-button {
+  font-size: 20px;
+}
+
+/*HOME.PUG*/
+
+/*Для растяжки меню по ширине*/
+.menu {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Стиль для текста*/
+.home-text {
+  padding: 10px;
+  font-family: CynthoNextSlab-Light;
+  font-size: 50px;
+}
+
+/*INDEX.PUG*/
+
+/*Кнопка для ссылки "FAQ"*/
+.faq-button {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 50px;
+  font-family: DigitallCG;
+}
+
+/*При наведении на кнопку*/
+.faq-button:hover {
+  background-color: #660000;
+  color: #000;
+}
+
+/*MODALS.PUG*/
+
+/*Фон*/
 .overlay {
   opacity: 0;
   visibility: hidden;
@@ -62,6 +184,7 @@ input {
   transition: .3s all;
 }
 
+/*Оболочка окна*/
 .modal {
   opacity: 0;
   visibility: hidden;
@@ -80,47 +203,25 @@ input {
   transition: 0.3s all;
 }
 
+/*Добавляется, когда окно активно*/
 .modal.active,
 .overlay.active{
    opacity: 1;
    visibility: visible;
 }
 
-.modal__cross {
-   position: absolute;
-   top: 20px;
-   right: 20px;
-   color: #fff;
-   cursor: pointer;
-}
-
-.js-open-modal {
-  padding: 10px;
-  display: inline-block;
-  text-decoration: none;
-  background-color: #000;
-  margin: 10px;
+/*Для кнопки "закрыть"*/
+.js-modal-close {
+  font-family: DigitallCG;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   color: #fff;
-  border-radius: 3px;
-  font-size: 50px;
+  cursor: pointer;
 }
 
-.faq {
-  padding: 10px;
-  display: inline-block;
-  text-decoration: none;
-  background-color: #000;
-  margin: 10px;
-  color: #fff;
-  border-radius: 3px;
-  font-size: 50px;
-}
-
-.faq:hover {
-  background-color: #660000;
-  color: #000;
-}
-
+/*используется в файле modals*/
+/*Для кнопок "войти" и "зарегистрироваться"*/
 .button {
   font-family: DigitallCG;
   box-shadow: none;
@@ -136,31 +237,9 @@ input {
   border-radius: 3px;
 }
 
-.js-open-modal:hover {
-  background-color: #660000;
-  color: #000;
-}
-
-input[type="submit"] {
-  font-size: 20px;
-  font-family: DigitallCG;
-  box-shadow: none;
-  outline: none;
-  border: none;
-}
-
-.js-open-modal-button {
-  padding: 10px;
-  display: inline-block;
-  text-decoration: none;
-  background-color: #000;
-  margin: 10px;
-  color: #fff;
-  border-radius: 3px;
-  font-size: 50px;
-}
-
-.js-open-modal-button:hover {
+/*используется в файле modals*/
+/*При наведении на кнопку*/
+.button:hover {
   background-color: #660000;
   color: #000;
 }

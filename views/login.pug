@@ -2,19 +2,17 @@ doctype html
 html(lang="ru")
 	head
 		meta(charset="UTF-8")
-		link(type="text/css" rel="stylesheet" href="/stylesheets/sign.css")
+		link(type="text/css" rel="stylesheet" href="/stylesheets/style.css")
 		title= "Войти"
 
 	body
-		div.main-block
-			h1 Вход на сайт
-				div
-					form( action='login', method='POST')
-						input(type='text', name='username', placeholder='Логин', required, autofocus)
-						input(type='password', name='password', placeholder='Пароль', required)
-						input(class ='js-open-modal-button', type='submit', value='Войти')
-						span.clearfix
-					#message
-						if message
-							h3 #{message}
-				a.to-main(href="/") Вернуться на главную
+		div.background
+			h1.digital-text Вход на сайт
+			form( action='login', method='POST')
+				input(type='text', name='username', placeholder='Логин', required, autofocus)
+				input(type='password', name='password', placeholder='Пароль', required)
+				input(class='js-open-modal button', type='submit', value='Войти')
+			#message
+				if message
+					p.digital-text #{message}
+			a.general-button.big-button(href="/") На главную
