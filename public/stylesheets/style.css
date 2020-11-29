@@ -243,3 +243,9 @@ input {
   background-color: #660000;
   color: #000;
 }
+
+/*TEST.PUG*/
+textarea {
+  min-width: 800px;
+  min-height: 200px;
+}
