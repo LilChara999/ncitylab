@@ -7,19 +7,6 @@ var isAuthenticated = function (req, res, next) {
 	res.redirect('/');
 }
 
-//router.get('/', function(req, res, next) {
-	//if(req.session.user){
-		//var data = {
-			//user : req.session.user
-		//}
-		//res.render('test', data);
-	//} else {
-		//var data = {title: 'Express',
-	//}
-	//res.render('index', data);
-	//}
-//});
-
 module.exports = function(passport){
 
 	/* GET login page. */
@@ -59,6 +46,10 @@ module.exports = function(passport){
 	/* GET Home Page */
 	router.get('/home', isAuthenticated, function(req, res){
 		res.render('home', { user: req.user });
+	});
+
+	router.get('/test', isAuthenticated, function(req, res){
+		res.render('test', { user: req.user });
 	});
 
 	/* Handle Logout */
