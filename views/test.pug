@@ -15,6 +15,6 @@ html(lang="ru")
         a.general-button(href='/signout') Выйти
       p Здесь находится тестовая запись, в которой чуть позже можно будет написать комментарии!
 
-      form(action='postsmth', method='POST')
+      form(action='/test', method='POST')
         textarea(type='text', name='comment', placeholder='Здесь какой-то текст!', required, autofocus)
         input(class='button', type='submit', value='Отправить')

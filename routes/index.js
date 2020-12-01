@@ -49,7 +49,21 @@ module.exports = function(passport){
 	});
 
 	router.get('/test', isAuthenticated, function(req, res){
-		res.render('test', { user: req.user });
+		res.render('test', { user: req.user,
+			data: {},
+			errors: {}
+	 	});
+	});
+
+	router.post('/test', isAuthenticated, function(req, res){
+		res.render('test', { user: req.user,
+			data: req.body,
+			errors: {
+				comment: {
+					msg: 'Напишите комментарий!'
+				}
+			}
+	 	});
 	});
 
 	/* Handle Logout */

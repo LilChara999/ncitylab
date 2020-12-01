@@ -20,6 +20,7 @@ div.modal(data-modal="2")
       input(type='text', name='username', placeholder='Логин', required, autofocus)
       input(type='password', name='password', placeholder='Пароль', required)
       input(type='email', name='email', placeholder='E-mail',required)
+      div(class="g-recaptcha center" data-sitekey="6LcfN_IZAAAAAMxb8lfkiAZnT3BfdnYrmPEvI70H")
       input(class='button', type='submit', value='Зарегистрироваться')
       span.clearfix
     #message
@@ -29,3 +30,4 @@ div.modal(data-modal="2")
 div.overlay.js-overlay-modal
 
 script(src='/javascripts/modal.js')
+script(src='https://www.google.com/recaptcha/api.js')

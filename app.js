@@ -1,6 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var dbConfig = require('./db.js');
@@ -12,6 +13,8 @@ var initPassport = require('./passport/init');
 var flash = require('connect-flash');
 initPassport(passport);
 var routes = require('./routes/index.js')(passport);
+var recaptcha_async = require('recaptcha-async');
+var recaptcha = new recaptcha_async.reCaptcha();
 
 var indexRouter = require('./routes/index')(passport);
 
@@ -48,6 +51,38 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+//объявление bodyParser для обработки комментариев
+var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+//объявление db для хранения комментариев
+//var commentsdb = 'mongodb://localhost:27017/userssessions';
+//mongoose.connect(dbConfig.url, {
+  //useMongoClient: true
+//});
+//mongoose.Promise = require('bluebird');
+//var comdb = mongoose.connection;
+//comdb.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+app.post('/register', function(req, res, next) {
+        var recaptcha = new recaptcha_async.reCaptcha();
+
+        // Eventhandler that is triggered by checkAnswer()
+        recaptcha.on('data', function (recaptcha_response) {
+                res.render('layout', {
+                        layout: 'layout.pug',
+                        locals: {
+                                recaptcha: recaptcha_response.is_valid ? 'valid' : 'invalid'
+                                }
+                });
+        });
+
+        // Check the user response by calling the google servers
+        // and sends a 'data'-event
+        recaptcha.checkAnswer('6LcfN_IZAAAAAPBwY0FTArVx-AohXtBYmYDhOUYM',  // private reCaptchakey (invalidated)
+                          req.connection.remoteAddress,
+                          req.body.recaptcha_challenge_field,
+                          req.body.recaptcha_response_field);
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
