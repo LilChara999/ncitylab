@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var dbConfig = require('./db.js');
 var mongoose = require('mongoose');
+var Grid = require('gridfs-stream');
+var fs = require('fs');
 var passport = require('passport');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -17,14 +19,19 @@ var recaptcha_async = require('recaptcha-async');
 var recaptcha = new recaptcha_async.reCaptcha();
 
 var indexRouter = require('./routes/index')(passport);
-
-var mongoDB = 'mongodb://localhost:27017/userssessions';
-mongoose.connect(dbConfig.url, {
-  useMongoClient: true
-});
+var mongoDB = mongoose.connect('mongodb://localhost:27017/userssessions');
 mongoose.Promise = require('bluebird');
 var db = mongoose.connection;
+Grid.mongo = mongoose.mongo;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+var gfs;
+
+db.once('open', function () {
+
+    gfs = Grid(db.db);
+
+});
 
 var app = express();
 app.use(cookieParser());
@@ -51,8 +58,73 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+
 //объявление bodyParser для обработки комментариев
 var urlencodedParser = bodyParser.urlencoded({extended: false});
+
+// Upload a file from loca file-system to MongoDB
+app.get('/files/upload',  function(req, res) {
+  var filename = req.query.filename;
+
+  var writestream = gfs.createWriteStream({ filename: filename });
+  fs.createReadStream(__dirname + '/files/' + filename).pipe(writestream);
+  writestream.on('close', function (file) {
+      res.send('Stored File: ' + file.filename);
+  });
+});
+
+// Download a file from MongoDB - then save to local file-system
+app.get('/files/download', function (req, res) {
+    // Check file exist on MongoDB
+
+var filename = req.query.filename;
+
+    gfs.exist({ filename: filename }, function (err, file) {
+        if (err || !file) {
+            res.status(404).send('File Not Found');
+    return
+        }
+
+  var readstream = gfs.createReadStream({ filename: filename });
+  readstream.pipe(res);
+    });
+});
+
+// Delete a file from MongoDB
+app.get('/files/delete', function (req, res) {
+
+  var filename = req.query.filename;
+
+  gfs.exist({ filename: filename }, function (err, file) {
+    if (err || !file) {
+      res.status(404).send('File Not Found');
+      return;
+  }
+
+    gfs.remove({ filename: filename }, function (err) {
+      if (err) res.status(500).send(err);
+      res.send('File Deleted');
+    });
+  });
+});
+
+// Get file information(File Meta Data) from MongoDB
+app.get('/files/meta', function (req, res) {
+
+var filename = req.query.filename;
+
+gfs.exist({ filename: filename }, function (err, file) {
+  if (err || !file) {
+    res.send('File Not Found');
+    return;
+  }
+
+  gfs.files.find({ filename: filename }).toArray( function (err, files) {
+    if (err) res.send(err);
+    res.json(files);
+  });
+});
+});
 
 //объявление db для хранения комментариев
 //var commentsdb = 'mongodb://localhost:27017/userssessions';
