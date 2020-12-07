@@ -41,6 +41,8 @@ input {
 /*затемнение фона для текста*/
 .background {
   background-color: rgba(0, 0, 0, 0.5);
+  height: auto;
+  width: 100%;
 }
 
 /*используется почти во всех файлах*/
@@ -248,4 +250,91 @@ input {
 textarea {
   min-width: 800px;
   min-height: 200px;
+}
+
+/*ADMIN.PUG*/
+
+.admin_page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.admin_menu {
+  display: flex;
+  align-self: stretch;
+  text-align: center;
+  justify-content: center;
+}
+
+.admin_row {
+  display: flex;
+  height: auto;
+  flex-direction: row;
+  margin: 5px;
+
+}
+
+.admin_panel {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-shrink: 1;
+  padding: 10px;
+}
+
+.admin_tab_panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_text {
+  display: block;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.tab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab input {
+  padding: 10px;
+  display: inline-block;
+  text-decoration: none;
+  background-color: #000;
+  margin: 10px;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 20px;
+  font-family: DigitallCG;
+}
+
+/* Change background color of buttons on hover */
+.tab input:hover {
+  background-color: #660000;
+  color: #000;
+}
+
+/* Create an active/current "tab button" class */
+.tab input.active {
+  background-color: #660000;
+  color: #000;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
 }

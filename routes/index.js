@@ -66,6 +66,15 @@ module.exports = function(passport){
 	 	});
 	});
 
+	router.get('/admin', isAuthenticated, function(req, res){
+		if (req.user.role == "admin") {
+			res.render('admin_panel')
+		}
+		else {
+			res.redirect('/')
+		}
+	});
+
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
 		req.logout();

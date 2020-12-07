@@ -1,0 +1,39 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    script(src='js/jquery-3.5.1.min.js')
+    link(type="text/css" rel="stylesheet" href="/stylesheets/style.css")
+    title= "Панель администратора"
+
+  body
+    div.admin_page
+      div.background
+        div.admin_menu
+          a.general-button(href="/") На главную
+          a.general-button(href="/faq") FAQ
+          a.general-button(href='/signout') Выйти
+        div.admin_row
+          div.admin_panel
+            div.tab
+              div.admin_tab_panel
+                input#defaultOpen.tablink(type="button" class="tablink" href="/plot" value='Схема сюжета' onclick='openTab(event, "plot")')
+                input.tablink(type="button" class="tablink" href="/bot" value='Настройка бота' onclick='openTab(event, "bot")')
+                input.tablink(type="button" class="tablink" href="/orders_for_episode" value='Заявки на эпизод' onclick='openTab(event, "orders_for_episode")')
+                input.tablink(type="button" class="tablink" href="/orders_for_deadline" value='Заявки на отсрочку' onclick='openTab(event, "orders_for_deadline")')
+                input.tablink(type="button" class="tablink" href="/create_location" value='Создать локацию' onclick='openTab(event, "create_location")')
+                input.tablink(type="button" class="tablink" href="/create_episode" value='Создать эпизод' onclick='openTab(event, "create_episode")')
+          div#plot(class="tabcontent")
+            p Схема сюжета
+          div#bot(class="tabcontent")
+            p Настройка бота
+          div#orders_for_episode(class="tabcontent")
+            p Заявки на эпизод
+          div#orders_for_deadline(class="tabcontent")
+            p Заявки на отсрочку
+          div#create_location(class="tabcontent")
+            p Создать локацию
+          div#create_episode(class="tabcontent")
+            p Создать эпизод
+
+    script(src='/javascripts/tabs.js')
