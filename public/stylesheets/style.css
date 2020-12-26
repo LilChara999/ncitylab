@@ -305,7 +305,6 @@ textarea {
     background-color: #f1f1f1;
 }
 
-/* Style the buttons that are used to open the tab content */
 .tab input {
   padding: 10px;
   display: inline-block;
@@ -318,19 +317,16 @@ textarea {
   font-family: DigitallCG;
 }
 
-/* Change background color of buttons on hover */
 .tab input:hover {
   background-color: #660000;
   color: #000;
 }
 
-/* Create an active/current "tab button" class */
 .tab input.active {
   background-color: #660000;
   color: #000;
 }
 
-/* Style the tab content */
 .tabcontent {
     display: block;
     text-align: center;
@@ -338,3 +334,56 @@ textarea {
     margin: 10px;
     padding: 10px;
 }
+
+input {
+  margin: 10px;
+}
+
+/*HAPPYNEWYEAR.PUG*/
+
+.cookiesbackground {
+	background-image: url('/images/happybackground.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.snowfall {
+  height:100%;
+  background-image: url('/images/snow.png'), url('/images/snow2.png'), url('/images/snow3.png');
+  -webkit-animation: snow 20s linear infinite;
+  -moz-animation: snow 20s linear infinite;
+  -ms-animation: snow 20s linear infinite;
+  -o-animation: snow 20s linear infinite;
+  animation: snow 20s linear infinite;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.happybackground {
+  width: 70%;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 10px;
+}
+
+@keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+
+@-moz-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
+}
+
+@-webkit-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    50% {background-color:#b4cfe0;}
+    100% {background-position: 500px 1000px, 400px 400px, 300px 300px; background-color:#6b92b9;}
+}
+
+@-ms-keyframes snow {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    100% {background-position: 500px 1000px, 400px 400px, 300px 300px;}
