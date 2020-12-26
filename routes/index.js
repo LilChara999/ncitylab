@@ -75,6 +75,10 @@ module.exports = function(passport){
 		}
 	});
 
+	router.get('/verysecretpage', function(req, res){
+		res.render('happynewyear');
+	});
+
 	/* Handle Logout */
 	router.get('/signout', function(req, res) {
 		req.logout();
