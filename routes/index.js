@@ -1,5 +1,31 @@
 var express = require('express');
 var router = express.Router();
+const locationController = require('../controllers/locations');
+var Location = require('../models/location');
+var multer = require('multer');
+const mongouri = 'mongodb://localhost:27017/userssessions';
+var GridFsStorage = require('multer-gridfs-storage');
+const crypto = require('crypto');
+var storage = new GridFsStorage ({
+  url: mongouri,
+  file: (req, file) => {
+    return new Promise((resolve,reject) =>{
+      crypto.randomBytes(16, (err, buf)=>{
+  if(err) {
+      return reject(err);
+  }
+	const fileid = file.id;
+  const filename = file.originalname;
+  const fileinfo = {
+			fileid:fileid,
+      filename:filename,
+      bucketName:'userdocs'
+       };
+       resolve(fileinfo);
+   });
+    }
+  )}});
+var upload = multer({ storage });
 
 var isAuthenticated = function (req, res, next) {
 	if (req.isAuthenticated())
@@ -69,6 +95,42 @@ module.exports = function(passport){
 	router.get('/admin', isAuthenticated, function(req, res){
 		if (req.user.role == "admin") {
 			res.render('admin_panel')
+		}
+		else {
+			res.redirect('/')
+		}
+	});
+
+	router.post('/admin', isAuthenticated, function(req, res){
+		if (req.user.role == "admin") {
+			res.render('admin_panel')
+		}
+		else {
+			res.redirect('/')
+		}
+	});
+
+	router.post('/addlocation', upload.single('filename'), function(req, res, next) {
+		if (req.user.role == "admin") {
+			locationController.create(req,res);
+		}
+	  else {
+			res.redirect('/')
+		}
+	});
+
+	router.get('/locations/:name', isAuthenticated, async(req, res) => {
+		if (req.user.role == "admin") {
+			locationController.list(req, res);
+		 }
+	   else {
+			 res.redirect('/')
+	 	}
+	});
+
+	router.get('/locations/:name/image', isAuthenticated, async(req, res) => {
+		if (req.user.role == "admin") {
+			locationController.image(req, res);
 		}
 		else {
 			res.redirect('/')
