@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
+var multer = require('multer');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var dbConfig = require('./db.js');
@@ -18,20 +19,55 @@ var routes = require('./routes/index.js')(passport);
 var recaptcha_async = require('recaptcha-async');
 var recaptcha = new recaptcha_async.reCaptcha();
 var gridfs = require('./routes/gridfs');
-var upload = gridfs.upload;
-var download = gridfs.download;
-var deletefile = gridfs.delete;
-var meta = gridfs.meta;
+var Schema = mongoose.Schema;
+var jsonParser = express.json();
+var GridFsStorage = require('multer-gridfs-storage');
+const crypto = require('crypto');
+const locationController = require('./controllers/locations');
 
 var indexRouter = require('./routes/index')(passport);
+const mongouri = 'mongodb://localhost:27017/userssessions'
 var mongoDB = mongoose.connect('mongodb://localhost:27017/userssessions');
 mongoose.Promise = require('bluebird');
 var db = mongoose.connection;
 Grid.mongo = mongoose.mongo;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+const conn = mongoose.createConnection(mongouri);
+let gfs;
+
+conn.once('open', function () {
+
+  gfs = Grid(conn.db);
+  gfs.collection('userdocs');
+
+});
+
+var storage = new GridFsStorage ({
+  url: mongouri,
+  file: (req, file) => {
+    return new Promise((resolve,reject) =>{
+      crypto.randomBytes(16, (err, buf)=>{
+  if(err) {
+      return reject(err);
+  }
+  const filename = file.originalname;
+  const fileinfo = {
+      filename:filename,
+      bucketName:'userdocs'
+       };
+      resolve(fileinfo);
+   });
+  }
+  )}});
+
+var upload = multer({ storage });
+
+
+var urlencodedParser = bodyParser.urlencoded({extended: true});
 
 var app = express();
+
 app.use(cookieParser());
 app.use(session({
   secret: 'mySecretKey',
@@ -47,30 +83,13 @@ app.use(passport.session());
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
 app.use(logger('dev'));
-app.use(flash())
+app.use(flash());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/files/upload', upload);
-app.use('/files/download', download);
-app.use('/files/delete', deletefile);
-app.use('/files/meta', meta);
-
-//объявление bodyParser для обработки комментариев
-var urlencodedParser = bodyParser.urlencoded({extended: false});
-
-//объявление db для хранения комментариев
-//var commentsdb = 'mongodb://localhost:27017/userssessions';
-//mongoose.connect(dbConfig.url, {
-  //useMongoClient: true
-//});
-//mongoose.Promise = require('bluebird');
-//var comdb = mongoose.connection;
-//comdb.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.post('/register', function(req, res, next) {
         var recaptcha = new recaptcha_async.reCaptcha();
