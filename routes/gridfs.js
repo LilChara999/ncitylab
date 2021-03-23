@@ -8,7 +8,7 @@ var app = express();
 
 db.once('open', function () {
 
-    gfs = Grid(db.db);
+  gfs = Grid(db.db);
 
 });
 
@@ -22,13 +22,14 @@ exports.upload = function (req, res) {
 }
 
 exports.download = function (req, res) {
+  var fileid = req.query.id;
   var filename = req.query.filename;
-  gfs.exist({ filename: filename }, function (err, file) {
+  gfs.exist({ fileid: fileid }, function (err, file) {
       if (err || !file) {
           res.status(404).send('File Not Found');
   return
       }
-  var readstream = gfs.createReadStream({ filename: filename });
+  var readstream = gfs.createReadStream({ fileid: fileid });
   readstream.pipe(res);
   });
 }
