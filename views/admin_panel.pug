@@ -2,7 +2,7 @@ doctype html
 html(lang="ru")
   head
     meta(charset="UTF-8")
-    script(src='js/jquery-3.5.1.min.js')
+    script(href='/javascripts/jquery-3.5.1.min.js')
     link(type="text/css" rel="stylesheet" href="/stylesheets/style.css")
     title= "Панель администратора"
 
@@ -21,7 +21,7 @@ html(lang="ru")
                 input.tablink(type="button" class="tablink" href="/bot" value='Настройка бота' onclick='openTab(event, "bot")')
                 input.tablink(type="button" class="tablink" href="/orders_for_episode" value='Заявки на эпизод' onclick='openTab(event, "orders_for_episode")')
                 input.tablink(type="button" class="tablink" href="/orders_for_deadline" value='Заявки на отсрочку' onclick='openTab(event, "orders_for_deadline")')
-                input.tablink(type="button" class="tablink" href="/create_location" value='Создать локацию' onclick='openTab(event, "create_location")')
+                input.tablink(type="button" class="tablink" href="/locations" value='Создать локацию' onclick='openTab(event, "locations")')
                 input.tablink(type="button" class="tablink" href="/create_episode" value='Создать эпизод' onclick='openTab(event, "create_episode")')
           div#plot(class="tabcontent")
             p Схема сюжета
@@ -31,8 +31,13 @@ html(lang="ru")
             p Заявки на эпизод
           div#orders_for_deadline(class="tabcontent")
             p Заявки на отсрочку
-          div#create_location(class="tabcontent")
-            p Создать локацию
+          div#locations(class="tabcontent")
+            h1 Создать локацию
+            form(action='/addlocation', method='post', enctype='multipart/form-data')
+              input(type='text' name='name')
+              textarea(type='text' name='desc')
+              input(type='file', name='filename')
+              input(type='submit' value='Отправить')
           div#create_episode(class="tabcontent")
             p Создать эпизод
 
