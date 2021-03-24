@@ -1,0 +1,27 @@
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    script(href='/javascripts/jquery-3.5.1.min.js')
+    link(type="text/css" rel="stylesheet" href="/stylesheets/style.css")
+    title= "Лаборатория Н"
+
+  body
+    div.block-faq
+      div.center.background
+        div.menu
+          a.general-button(href="/") На главную
+          a.general-button(href="/faq") FAQ
+          a.general-button(href="/test") Тест!
+          a.general-button(href="/admin") Вернуться к панели
+          a.general-button(href='/signout') Выйти
+        div.home-text
+          ename= ename
+          br
+          img(src='/episodes/' + ename + '/image')
+          br
+          div(style='font-size: 16px')
+            desc= desc
+            br
+            br
+            weather= weather
