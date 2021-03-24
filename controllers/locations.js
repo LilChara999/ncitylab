@@ -47,7 +47,6 @@ exports.list = async (req, res) => {
 
 exports.image = function (req, res) {
   const location = Location.findOne({name: req.params.name}, function(err, location) {
-    //var file = location.file;
     gfs.collection('userdocs');
     var readstream = gfs.createReadStream(location.file);
     readstream.on("error", function(err){
