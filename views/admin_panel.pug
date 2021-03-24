@@ -35,10 +35,23 @@ html(lang="ru")
             h1 Создать локацию
             form(action='/addlocation', method='post', enctype='multipart/form-data')
               input(type='text' name='name')
+              br
               textarea(type='text' name='desc')
+              br
               input(type='file', name='filename')
+              br
               input(type='submit' value='Отправить')
           div#create_episode(class="tabcontent")
-            p Создать эпизод
+            h1 Создать эпизод
+            form(action='/addepisode', method='post', enctype='multipart/form-data')
+              input(type='text' name='ename')
+              br
+              textarea(type='text' name='desc')
+              br
+              input(type='text' name='weather')
+              br
+              input(type='file' name='filename')
+              br
+              input(type='submit' value='Отправить')
 
     script(src='/javascripts/tabs.js')
