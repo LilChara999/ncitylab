@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const locationController = require('../controllers/locations');
+const episodeController = require('../controllers/episodes');
 var Location = require('../models/location');
+var Episode = require('../models/episode');
 var multer = require('multer');
 const mongouri = 'mongodb://localhost:27017/userssessions';
 var GridFsStorage = require('multer-gridfs-storage');
@@ -119,6 +121,12 @@ module.exports = function(passport){
 		}
 	});
 
+  router.post('/addepisode', upload.single('filename'), function(req, res, next) {
+    if (req.user.role == "admin") {
+      episodeController.create(req, res);
+    }
+  });
+
 	router.get('/locations/:name', isAuthenticated, async(req, res) => {
 		if (req.user.role == "admin") {
 			locationController.list(req, res);
@@ -128,6 +136,15 @@ module.exports = function(passport){
 	 	}
 	});
 
+  router.get('/episodes/:ename', isAuthenticated, async(req, res) => {
+    if (req.user.role == "admin") {
+      episodeController.list(req, res);
+    }
+    else {
+      res.redirect('/')
+    }
+  });
+
 	router.get('/locations/:name/image', isAuthenticated, async(req, res) => {
 		if (req.user.role == "admin") {
 			locationController.image(req, res);
@@ -136,6 +153,15 @@ module.exports = function(passport){
 			res.redirect('/')
 		}
 	});
+
+  router.get('/episodes/:ename/image', isAuthenticated, async(req, res) => {
+    if (req.user.role == "admin") {
+      episodeController.image(req, res);
+    }
+    else {
+      res.redirect('/')
+    }
+  });
 
 	router.get('/verysecretpage', function(req, res){
 		res.render('happynewyear');
