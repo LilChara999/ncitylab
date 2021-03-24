@@ -24,6 +24,7 @@ var jsonParser = express.json();
 var GridFsStorage = require('multer-gridfs-storage');
 const crypto = require('crypto');
 const locationController = require('./controllers/locations');
+const episodeController = require('./controllers/episodes');
 
 var indexRouter = require('./routes/index')(passport);
 const mongouri = 'mongodb://localhost:27017/userssessions'
